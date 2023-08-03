@@ -9,7 +9,7 @@ def print_arguments(argv):
         print(":")
     else:
         print(f"{num_args} argument{'s' if num_args > 1 else ''}:")
-        for i, arg in enumerate(argv, 1):
+        for i, arg in enumerate(args, 1):
             print(f"{i}: {arg}")
 
 if __name__ == "__main__":
