@@ -12,4 +12,4 @@ cursor.execute('INSERT INTO states (name) VALUES ("California"), ("Arizona"), ("
 rows = cursor.execute(
     "SELECT * FROM states")
 results = cursor.fetchall()
-print(results) 
+print(results)
