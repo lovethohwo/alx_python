@@ -8,4 +8,3 @@ rows = cursor.execute("SELECT * FROM states ORDER BY id")
 results = cursor.fetchall()
 for result in results:
     print(result)
-#END
