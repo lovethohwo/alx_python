@@ -14,8 +14,8 @@ create = "CREATE TABLE IF NOT EXISTS states (id INT NOT NULL AUTO_INCREMENT PRIM
 cursor.execute(create)
 
 # Insert
-#qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
-#cursor.execute(qry)
+qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
+cursor.execute(qry)
 
 # Execute the query to retrieve states
 query = "SELECT * FROM states ORDER BY id ASC"
