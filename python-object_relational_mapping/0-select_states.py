@@ -1,5 +1,4 @@
 # 0-select_states.py
-import sys
 import MySQLdb
 database = MySQLdb.connect(
     host="localhost",
