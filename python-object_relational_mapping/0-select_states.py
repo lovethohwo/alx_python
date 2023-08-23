@@ -8,5 +8,5 @@ rows = cursor.execute("SELECT * FROM states ORDER BY id")
 results = cursor.fetchall()
 for result in results:
     print(result)
-print("\n")
-#END
+cursor.close()
+database.close()
