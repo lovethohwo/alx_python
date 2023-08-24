@@ -1,7 +1,7 @@
 import MySQLdb
 
 # Connect to the MySQL server
-db = MySQLdb.connect(host="localhost", user="root", passwd="Judyloveth@2023", db="hbtn_0c_0")
+db = MySQLdb.connect(host="localhost", user="root", passwd="Judyloveth@2023", db="mysql")
 cursor = db.cursor()
 
 create = '''  
