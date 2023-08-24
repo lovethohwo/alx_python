@@ -7,23 +7,26 @@ cursor = db.cursor()
 create = '''  
     CREATE TABLE IF NOT EXISTS states (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-        name VARCHAR(256) NOT NULL
+        name VARCHAR(256) UNIQUE NOT NULL
         )
  '''
 cursor.execute(create)
 db.commit()
 
 def insert_entry():
-    try:
-        # Attempt to insert the entry into the table
+    # Attempt to insert the entry into the table
+    sel= '''
+        SELECT * FROM states
+    '''
+    cursor.execute(sel)
+    found_rows = cursor.fetchall()
+    num_rows = len(found_rows)
+    if num_rows < 2:
         qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
         cursor.execute(qry)
         db.commit()
-        
-    except MySQLdb.IntegrityError as e:
-        print("Error:", e)
-        
-# Example usage
+    else:
+        print("")
 insert_entry()
   # This will result in a duplicate entry error
 
