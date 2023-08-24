@@ -19,7 +19,6 @@ def insert_entry():
         qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
         cursor.execute(qry)
         db.commit()
-        print("Entry inserted successfully.")
         
     except MySQLdb.IntegrityError as e:
         print("Error:", e)
