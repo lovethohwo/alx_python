@@ -22,7 +22,6 @@ def insert_entry():
         
     except MySQLdb.IntegrityError as e:
         print("Error:", e)
-        print("Duplicate entry detected. Entry not inserted.")
         
 # Example usage
 insert_entry()
