@@ -16,7 +16,7 @@ db.commit()
 def insert_entry():
     # Attempt to insert the entry into the table
     sel= '''
-        SELECT * FROM states
+        SELECT * FROM states ORDER BY id ASC
     '''
     cursor.execute(sel)
     found_rows = cursor.fetchall()
@@ -25,6 +25,11 @@ def insert_entry():
         qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
         cursor.execute(qry)
         db.commit()
+       # results = cursor.fetchall()
+
+# Print the results
+        for row in found_rows:
+            print(row)
     else:
         print("")
 insert_entry()
@@ -32,15 +37,10 @@ insert_entry()
 
 
 # Execute the query to retrieve states
-query = "SELECT * FROM states ORDER BY id ASC"
-cursor.execute(query)
+
 
 # Fetch all the results
-results = cursor.fetchall()
 
-# Print the results
-for row in results:
-    print(row)
 
 # Close the cursor and the database connection
 cursor.close()
