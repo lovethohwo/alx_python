@@ -7,7 +7,7 @@ cursor = db.cursor()
 create = '''  
     CREATE TABLE IF NOT EXISTS states (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-        name VARCHAR(256) UNIQUE NOT NULL
+        name VARCHAR(256) NOT NULL
         )
  '''
 cursor.execute(create)
