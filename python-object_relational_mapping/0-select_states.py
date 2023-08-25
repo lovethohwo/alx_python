@@ -14,22 +14,20 @@ cursor.execute(create)
 db.commit()
 
 def insert_entry():
-    # Attempt to insert the entry into the table
+# Attempt to insert the entry into the table
     sel= '''
         SELECT * FROM states ORDER BY id ASC
     '''
     cursor.execute(sel)
     found_rows = cursor.fetchall()
+    for row in found_rows:
+        print(row)
     num_rows = len(found_rows)
     if num_rows < 2:
         qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
         cursor.execute(qry)
         db.commit()
-       # results = cursor.fetchall()
-
 # Print the results
-        for row in found_rows:
-            print(row)
     else:
         print("")
 insert_entry()
