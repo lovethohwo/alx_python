@@ -1,45 +1,20 @@
+# listing out all tables in a certain database
 import MySQLdb
+import sys
 
-# Connect to the MySQL server
-db = MySQLdb.connect(host="localhost", user="root", passwd="Judyloveth@2023", db="mysql")
-cursor = db.cursor()
+# create a variable
+database = MySQLdb.connect(host="localhost", port=3306,
+                           user=sys.argv[1],
+                           passwd=sys.argv[2],
+                           db=sys.argv[3])
 
-create = '''  
-    CREATE TABLE IF NOT EXISTS states (
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-        name VARCHAR(256) UNIQUE NOT NULL
-        )
- '''
-cursor.execute(create)
-db.commit()
+# create a 'cursor', note it can be named anything
+cursor = database.cursor()
+cursor.execute("SELECT id, name FROM states ORDER BY id ASC")
+states = cursor.fetchall()
 
-def insert_entry():
-# Attempt to insert the entry into the table
-    sel= '''
-        SELECT * FROM states ORDER BY id ASC
-    '''
-    cursor.execute(sel)
-    found_rows = cursor.fetchall()
-    for row in found_rows:
-        print(row)
-    num_rows = len(found_rows)
-    if num_rows < 2:
-        qry = 'INSERT INTO states (name) VALUES ("California"), ("Arizona")'
-        cursor.execute(qry)
-        db.commit()
-# Print the results
-    else:
-        print("")
-insert_entry()
-  # This will result in a duplicate entry error
+for state in states:
+    print(state)
 
-
-# Execute the query to retrieve states
-
-
-# Fetch all the results
-
-
-# Close the cursor and the database connection
 cursor.close()
-db.close()
+database.close()
