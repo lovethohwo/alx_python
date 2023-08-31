@@ -1,22 +1,20 @@
-"""
-Lists all State objects from the database hbtn_0e_6_usa
-"""
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-import sys
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
+Base = declarative_base()
 
-if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
-        sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
-    Base.metadata.create_all(engine)
+class State(Base):
+    """
+     Maps to the 'states' table.
 
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    Attributes:
+        id (int): The unique identifier for the state.
+        name (str): The name of the state.
 
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-
-    session.close()
+    Args:
+        Base (DeclarativeMeta): The base class.
+        """
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(128), nullable=False)
